@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماشای فیلم | فیلم‌باز</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="watch-header">
+    <button id="backBtn" class="back-btn">→</button>
+    <h1 class="logo-small">🎬 فیلم‌باز</h1>
+  </header>
+
+  <div class="player-container">
+    <video id="player" controls playsinline preload="auto">
+      مرورگرت از ویدیو پشتیبانی نمی‌کنه
+    </video>
+  </div>
+
+  <section class="movie-info">
+    <h2 id="movieTitle" class="movie-title">در حال بارگذاری...</h2>
+    
+    <div class="movie-meta">
+      <span id="movieYear" class="meta-item">📅 ۲۰۲۴</span>
+      <span id="movieDuration" class="meta-item">⏱ ۱۲۰ دقیقه</span>
+      <span id="movieRating" class="meta-item rating">⭐ 8.5</span>
+      <span id="movieCategory" class="meta-item">🎬 اکشن</span>
+    </div>
+
+    <p id="movieDesc" class="movie-desc">
+      یه فیلم فوق‌العاده که باید ببینیش. داستان جذاب، بازیگران حرفه‌ای و کارگردانی عالی.
+    </p>
+
+    <div class="action-buttons">
+      <button id="favoriteBtn" class="btn btn-outline">❤️ علاقه‌مندی</button>
+      <button id="shareBtn" class="btn btn-outline">📤 اشتراک‌گذاری</button>
+    </div>
+
+    <button id="createRoom" class="btn btn-green btn-large">
+      🎉 ساخت اتاق واچ‌پارتی
+    </button>
+  </section>
+
+  <section class="similar-section">
+    <h3 class="section-title">🎬 فیلم‌های مشابه</h3>
+    <div id="similarMovies" class="similar-list"></div>
+  </section>
+
+  <footer>
+    <p>© ۲۰۲۵ فیلم‌باز — ساخته شده با ❤️</p>
+  </footer>
+
+  <script src="watch.js"></script>
+</body>
+</html>

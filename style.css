@@ -1,0 +1,450 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma, sans-serif;
+}
+
+body {
+  background: #0a0e0a;
+  color: #fff;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* ===== هدر ===== */
+header {
+  background: #0f1710;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #1a2b1a;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.logo {
+  font-size: 22px;
+  color: #1DB954;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+}
+
+.menu-btn {
+  background: #1a2b1a;
+  border: none;
+  color: #1DB954;
+  font-size: 22px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu {
+  background: #0f1710;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid #1a2b1a;
+}
+
+.menu.hidden { display: none; }
+
+.menu-item {
+  display: block;
+  padding: 12px 15px;
+  color: #ccc;
+  text-decoration: none;
+  border-bottom: 1px solid #1a2b1a;
+  font-size: 14px;
+}
+
+.menu-item:last-child { border-bottom: none; }
+.menu-item.active { color: #1DB954; background: #1a2b1a; }
+
+#search {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #1a2b1a;
+  background: #0a0e0a;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+#search:focus { border-color: #1DB954; }
+
+/* ===== بنر ===== */
+.hero {
+  background: linear-gradient(135deg, #0f1710 0%, #1a2b1a 50%, #0f1710 100%);
+  padding: 30px 20px;
+  margin: 15px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #1a2b1a;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(29, 185, 84, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: #1DB954;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.hero-desc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* ===== دکمه‌های افزودن ===== */
+.add-section {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.15s;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-green {
+  background: #1DB954;
+  color: #000;
+}
+
+.btn-red {
+  background: #e50914;
+  color: #fff;
+}
+
+.status {
+  padding: 10px;
+  background: #0f1710;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #fff;
+  border: 1px solid #1a2b1a;
+}
+
+.hidden { display: none; }
+
+/* ===== دسته‌بندی‌ها ===== */
+.categories {
+  display: flex;
+  gap: 8px;
+  padding: 0 15px 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #1a2b1a;
+  background: #0f1710;
+  color: #ccc;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cat-btn.active {
+  background: #1DB954;
+  color: #000;
+  border-color: #1DB954;
+  font-weight: bold;
+}
+
+/* ===== لیست فیلم‌ها ===== */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 15px;
+}
+
+.movie-card {
+  background: #0f1710;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #1a2b1a;
+  position: relative;
+}
+
+.movie-card:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card .info {
+  padding: 10px;
+}
+
+.movie-card .title {
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card .meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #888;
+}
+
+.movie-card .rating {
+  color: #1DB954;
+  font-weight: bold;
+}
+
+.movie-card .badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(29, 185, 84, 0.9);
+  color: #000;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* ===== فوتر ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 12px;
+  margin-top: 20px;
+}/* ===== صفحه تماشا ===== */
+.watch-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: #0f1710;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #1a2b1a;
+}
+
+.back-btn {
+  background: #1a2b1a;
+  border: none;
+  color: #1DB954;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logo-small {
+  font-size: 16px;
+  color: #1DB954;
+  font-weight: bold;
+}
+
+.player-container {
+  background: #000;
+  width: 100%;
+}
+
+#player {
+  width: 100%;
+  max-height: 60vh;
+  background: #000;
+  display: block;
+}
+
+.movie-info {
+  padding: 20px 15px;
+}
+
+.movie-title {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.movie-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.meta-item {
+  background: #0f1710;
+  color: #ccc;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid #1a2b1a;
+}
+
+.meta-item.rating {
+  color: #1DB954;
+  font-weight: bold;
+  border-color: #1DB954;
+}
+
+.movie-desc {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.btn-outline {
+  background: #0f1710;
+  color: #1DB954;
+  border: 1px solid #1DB954;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-outline:active {
+  background: #1DB954;
+  color: #000;
+}
+
+.btn-large {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+/* ===== فیلم‌های مشابه ===== */
+.similar-section {
+  padding: 20px 15px;
+  border-top: 1px solid #1a2b1a;
+  margin-top: 10px;
+}
+
+.section-title {
+  font-size: 16px;
+  color: #1DB954;
+  margin-bottom: 15px;
+}
+
+.similar-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 5px;
+}
+
+.similar-list::-webkit-scrollbar { display: none; }
+
+.similar-card {
+  min-width: 120px;
+  background: #0f1710;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #1a2b1a;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.similar-card:active { transform: scale(0.96); }
+
+.similar-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.similar-title {
+  padding: 8px;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.similar-rating {
+  padding: 0 8px 8px;
+  font-size: 11px;
+  color: #1DB954;
+  font-weight: bold;
+}

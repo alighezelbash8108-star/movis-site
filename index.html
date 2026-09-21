@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فیلم‌باز | سینمای آنلاین</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1 class="logo">🎬 فیلم‌باز</h1>
+      <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+    
+    <div id="menu" class="menu hidden">
+      <a href="#" class="menu-item active">🏠 خانه</a>
+      <a href="#" class="menu-item">🎬 فیلم‌ها</a>
+      <a href="#" class="menu-item">📺 سریال‌ها</a>
+      <a href="#" class="menu-item">❤️ علاقه‌مندی‌ها</a>
+    </div>
+
+    <input type="text" id="search" placeholder="🔍 جستجوی فیلم...">
+  </header>
+
+  <!-- بنر اصلی -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">🔥 جدید</span>
+      <h2 class="hero-title">به فیلم‌باز خوش اومدی</h2>
+      <p class="hero-desc">فیلم‌های مورد علاقه‌ات رو با دوستات تماشا کن</p>
+    </div>
+  </section>
+
+  <!-- دکمه‌های افزودن فیلم -->
+  <section class="add-section">
+    <button id="addFromGallery" class="btn btn-green">
+      📁 افزودن از گالری (موقت)
+    </button>
+    <button id="uploadToServer" class="btn btn-red">
+      📤 آپلود به سرور (دائمی)
+    </button>
+    <input type="file" id="fileInput" accept="video/*" style="display:none;">
+    <input type="file" id="uploadInput" accept="video/*" style="display:none;">
+    <div id="uploadStatus" class="status hidden"></div>
+  </section>
+
+  <!-- دسته‌بندی‌ها -->
+  <section class="categories">
+    <button class="cat-btn active" data-cat="all">همه</button>
+    <button class="cat-btn" data-cat="action">🎬 اکشن</button>
+    <button class="cat-btn" data-cat="comedy">😂 کمدی</button>
+    <button class="cat-btn" data-cat="drama">🎭 درام</button>
+    <button class="cat-btn" data-cat="horror">👻 ترسناک</button>
+    <button class="cat-btn" data-cat="scifi">🚀 علمی-تخیلی</button>
+    <button class="cat-btn" data-cat="animation">🎨 انیمیشن</button>
+  </section>
+
+  <!-- لیست فیلم‌ها -->
+  <main id="movieList" class="movie-list"></main>
+
+  <!-- فوتر -->
+  <footer>
+    <p>© ۲۰۲۵ فیلم‌باز — ساخته شده با ❤️</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
