@@ -1,14 +1,11 @@
 // آدرس پارامترها رو می‌خونیم
 const params = new URLSearchParams(window.location.search);
-const roomId = params.get("room"); // اگه از لینک اومده باشه
+const roomId = params.get("room");
 
-// اگه اتاق نداشت، خودش می‌سازه
 let myRoomId = roomId;
 
-// اگه تو با دکمه ساخت اتاق اومدی، یه کد بساز
 if (!myRoomId) {
   myRoomId = Math.random().toString(36).substring(2, 8);
-  // آدرس رو آپدیت کن
   window.history.replaceState(null, "", "?room=" + myRoomId);
 }
 
@@ -29,20 +26,27 @@ if (movie) {
   statusEl.innerText = "⚠️ فیلمی انتخاب نشده، از صفحه اصلی انتخاب کن";
 }
 
-// --- PeerJS ---
+// --- PeerJS با STUN servers ---
 const peer = new Peer("room-" + myRoomId, {
-  debug: 2
+  debug: 2,
+  config: {
+    iceServers: [
+      { urls: "stun:stun.l.google.com:19302" },
+      { urls: "stun:stun1.l.google.com:19302" },
+      { urls: "stun:global.stun.twilio.com:3478" },
+      { urls: "stun:stun.services.mozilla.com" }
+    ]
+  }
 });
 
-let conn = null; // اتصال به دوست
-let isHost = !roomId; // اگه از لینک اومده، مهمان. اگه خودش ساخت، میزبان
+let conn = null;
+let isHost = !roomId;
 
 peer.on("open", (id) => {
   if (isHost) {
     statusEl.innerText = "✅ اتاق ساخته شد. منتظر دوستت هستی...";
   } else {
     statusEl.innerText = "🔄 در حال اتصال به میزبان...";
-    // به میزبان وصل شو
     connectToHost();
   }
 });
@@ -65,16 +69,17 @@ function connectToHost() {
     statusEl.innerText = "✅ به اتاق وصل شدی!";
     setupConnection();
   });
+  conn.on("error", (err) => {
+    statusEl.innerText = "❌ خطا در اتصال: " + err.message;
+  });
 }
 
-// توابع ارسال و دریافت پیام‌های سینک
+// توابع سینک
 function setupConnection() {
-  // وقتی تو پلی/توقف/جلو زدی، به دوستت بفرست
   player.addEventListener("play", () => send("play", player.currentTime));
   player.addEventListener("pause", () => send("pause", player.currentTime));
   player.addEventListener("seeked", () => send("seek", player.currentTime));
 
-  // پیام‌های دریافتی
   conn.on("data", (data) => {
     if (data.type === "play") {
       player.currentTime = data.time;
